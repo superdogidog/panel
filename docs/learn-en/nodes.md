@@ -46,6 +46,12 @@ This block lets you configure how user traffic is counted using a multiplier (co
 For instance, if a user has a 1 GB data limit and the coefficient is set to `2.0`, they’ll only be able to use **0.5 GB** of actual traffic.  
 Remnawave will still report **1 GB** used, and the user's status will change to `LIMITED`.
 
+:::tip Consumption multiplier set to `0`
+Setting the multiplier to `0` means traffic through this node is **not counted** toward the user's data limit at all.
+
+Additionally, hosts belonging to nodes with a multiplier of `0` remain **visible in the user's subscription even when their status is `LIMITED`**. Only hosts from nodes with a non-zero multiplier are hidden when the user exhausts their traffic limit. This lets you designate certain nodes as always-accessible, regardless of the user's consumption status.
+:::
+
 ### Core Configuration {#core-configuration}
 
 <img src={require('./images/9.webp').default} width="100%" style={{borderRadius: '8px'}} alt="Core Configuration" />

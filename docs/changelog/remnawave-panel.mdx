@@ -124,6 +124,8 @@ Used for generating direct links (e.g. in Telegram notifications with inline but
 - **Telegram Bot proxy support**: new optional `TELEGRAM_BOT_PROXY` variable (format: `protocol://user:password@host:port`)
 - **Telegram inline keyboards**: notification messages now support interactive buttons
 - **Node Bulk Update**: update `countryCode`, `consumptionMultiplier`, `providerUuid`, `tags`, `activePluginUuid` for multiple nodes at once
+- **Zero-consumption node hosts always visible**: hosts from nodes with `consumptionMultiplier = 0` remain visible in the user's subscription even when their status is `LIMITED`
+    - Only hosts from nodes with a non-zero multiplier are hidden when the user's traffic limit is reached
 - **Node System Info**: CPU, memory, network, uptime now reported separately from the node model and cached with 30s TTL
 - **RAW subscription refactor**: the `rawHosts` array in `/api/subscriptions/by-short-uuid/{shortUuid}/raw` is replaced with `resolvedProxyConfigs` — a fully typed structure with discriminated unions for protocol (`vless`, `trojan`, `shadowsocks`), transport (`tcp`, `ws`, `xhttp`, `httpupgrade`, `grpc`, `kcp`), and security (`tls`, `reality`, `none`). Each proxy entry now contains `protocolOptions`, `transportOptions`, `securityOptions`, `streamOverrides`, `mux`, `clientOverrides`, and `metadata` instead of flat fields
 
